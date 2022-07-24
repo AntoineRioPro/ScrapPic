@@ -6,6 +6,7 @@ const createWindow = () => {
     const win = new BrowserWindow({
       width: 800,
       height: 600,
+      show: false,
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,
@@ -13,8 +14,9 @@ const createWindow = () => {
         preload: path.join(__dirname, 'preload.js')
       }
     })
-  
-    win.loadFile('index.html')
+    win.loadFile('index.html');
+    
+    win.on('ready-to-show', () => win.show());
 }
 
 app.whenReady().then(() => {

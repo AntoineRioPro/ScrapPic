@@ -24,7 +24,7 @@ function urlToName(url) {
 }
 
 function checkIcon(url) {
-    return url.includes('svg');
+    return url.includes('.svg');
 }
 
 //#endregion

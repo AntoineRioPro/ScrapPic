@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="css/style.css">
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
@@ -8,9 +9,11 @@
   </head>
   <body>
     <h1>Welcome to SCRAPPIC !</h1>
+    <div>
     We are using Node.js <span id="node-version"></span>,
     Chromium <span id="chrome-version"></span>,
     and Electron <span id="electron-version"></span>.
+    </div>
     <div>
         Type the url of the website you want to scrap:
         <input id="url" placeholder="Enter a URL" onchange="pathChange(this.value)">

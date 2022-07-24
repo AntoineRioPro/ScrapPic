@@ -1,0 +1,29 @@
+li {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+div {
+    align-items: center;
+    text-align: center;
+    font-size: large;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+}
+
+.page {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    border: 3px solid rgb(0, 0, 0);
+}

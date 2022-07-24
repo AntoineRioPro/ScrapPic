@@ -1,7 +1,6 @@
 const cheerio = window.require('cheerio');
 const axios = window.require('axios');
 const { fixUrl, getName, checkIcon, urlToName } = require('./tools.js');
-const urlExist = (...args) => import('url-exist').then(({default: fetch}) => fetch(...args));
 request = require('request');
 
 const fs = window.require('fs');
@@ -36,9 +35,9 @@ function saveImages(page, images) {
 }
 
 async function savePath(event) {
-  await images.scrape(path);
-  console.log(images.images);
-  document.getElementById('scrap-images').innerHTML = images.inject();
+    await images.scrape(path);
+    console.log(images.images);
+    document.getElementById('scrap-images').innerHTML = images.inject();
 }
 
 function pathChange(event) {
@@ -88,8 +87,7 @@ class Images {
                 const src = image.attribs.src;
                 if (src)
                 {
-                    const exist = await axios.get(fixUrl(src));
-                    if (!checkIcon(url[i]))
+                    if (!checkIcon(src))
                         this.images[url].push(fixUrl(src));
                 }
             }
