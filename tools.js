@@ -9,7 +9,7 @@ function getName(url) {
     let res = url.split('/').pop();
     if (res.includes('.'))
         res = res.split('.')[0];
-    var format = /[ `!@#$%^&*()+=\[\]{};':"\\|,<>\/?~]/;
+    var format = /[ `!@#$%^&*()+=[\]{};':"\\|,<>/?~]/;
     if (format.test(res))
         return "";
     return res;
@@ -32,7 +32,7 @@ function checkIcon(url) {
 //#region [List Tools]
 function removeElm(list, elm) {
     for (var i = 0; i < list.length; i++) {
-        if (list[i].elm == elm)
+        if (list[i].elm === elm)
             list.splice(i, 1);
         }
     return list;

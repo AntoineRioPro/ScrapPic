@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src * 'unsafe-inline'; img-src * 'unsafe-inline'">
+    <title>SCRAPPIC</title>
+  </head>
+  <body>
+    <h1>Welcome to SCRAPPIC !</h1>
+    We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.
+    <div>
+        Type the url of the website you want to scrap:
+        <input id="url" placeholder="Enter a URL" onchange="pathChange(this.value)">
+        <button id="scrap-button" onclick="savePath()">Scrap</button>
+        <button id="scrap-button" onclick="downloadImages()">Download</button>
+        <p id="scrap-images"></p>
+    </div>
+    <script src="./Images.js">
+    </script>
+  </body>
+</html>
