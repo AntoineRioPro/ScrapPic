@@ -66,6 +66,12 @@ function deleteImage(name) {
     }
 }
 
+function deletePage(name) {
+    console.log("trying to delete page " + name);
+    delete images.images[name];
+    document.getElementById('scrap-images').innerHTML = images.inject();
+}
+
 class Images {
     constructor() {
         this.images = {};
@@ -103,10 +109,10 @@ class Images {
         let id;
         for (let page in this.images) {
             id = 0;
-            html += `<div class="page">${page}`;
+            html += `<div class="page">${page}<button onclick="deletePage('${page}')">Delete Page</button>`;
             for (let image of this.images[page]) {
                 id++;
-                html += `<li><img src="${image}"><button name="${image}" onclick="deleteImage(this.name)">Delete</button></li>`;
+                html += `<li class="container"><img src="${image}" class="image"><div class="middle"><button class="text" name="${image}" onclick="deleteImage(this.name)">Delete</button></div></li>`;
             }
         }
         html += '</div>';
