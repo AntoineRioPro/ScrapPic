@@ -30,6 +30,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.12",
+    "downloads-folder": "^3.0.3",
     "fs": "^0.0.1-security",
     "path": "^0.12.7",
     "request": "^2.88.2"
@@ -38,6 +39,9 @@
     "appId": "ScrapPic",
     "win": {
       "target": "nsis"
+    },
+    "mac": {
+      "category": "public.app-category.utilities"
     }
   }
 }

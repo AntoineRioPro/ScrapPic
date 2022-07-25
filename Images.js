@@ -3,9 +3,12 @@ const axios = window.require('axios');
 const { fixUrl, getName, checkIcon, urlToName, urlToPath } = require('./tools.js');
 request = require('request');
 const { clipboard } = require('electron')
+const downloadsFolder = require('downloads-folder');
 
 const fs = window.require('fs');
 const pathModule = window.require('path');
+
+const downloadPath = downloadsFolder();
 
 // function for test purposes
 function warn(msg = 'Warning!')
@@ -24,7 +27,7 @@ async function saveImage(name, ImagePath, dir) {
 // save a list of images in a folder with the name of their page
 function saveImages(page, images) {
   let url = images[page];
-  let dir = 'images/'
+  let dir = downloadPath + '/images/'
   if (!fs.existsSync(dir))
       fs.mkdirSync(dir);
   dir += urlToName(page) + '/';
@@ -52,8 +55,9 @@ function downloadImages() {
     }
     document.getElementById('scrap-images').innerHTML = '';
     images.images = {};
-    let fullPath = urlToPath(__dirname) + "/images/";
+    let fullPath = urlToPath(downloadPath) + "/images/";
     document.getElementById('scrap-images').innerHTML = `<div class="alert alert-success" role="alert"><strong>Success!</strong> Images downloaded in ${fullPath}<button onclick="copyToClipboard('${fullPath}')">Click to copy</button></div>`;
+
 }
 
 function copyToClipboard(copyText) {
