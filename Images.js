@@ -1,7 +1,8 @@
 const cheerio = window.require('cheerio');
 const axios = window.require('axios');
-const { fixUrl, getName, checkIcon, urlToName } = require('./tools.js');
+const { fixUrl, getName, checkIcon, urlToName, urlToPath } = require('./tools.js');
 request = require('request');
+const { clipboard } = require('electron')
 
 const fs = window.require('fs');
 const pathModule = window.require('path');
@@ -49,7 +50,16 @@ function downloadImages() {
     for (let page in images.images) {
         saveImages(page, images.images);
     }
+    document.getElementById('scrap-images').innerHTML = '';
+    images.images = {};
+    let fullPath = urlToPath(__dirname) + "/images/";
+    document.getElementById('scrap-images').innerHTML = `<div class="alert alert-success" role="alert"><strong>Success!</strong> Images downloaded in ${fullPath}<button onclick="copyToClipboard('${fullPath}')">Click to copy</button></div>`;
 }
+
+function copyToClipboard(copyText) {
+    clipboard.writeText(copyText);
+    alert("Copied the text: " + copyText);
+  }
 
 function deleteImage(name) {
     console.log("trying to delete " + name);

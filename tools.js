@@ -27,6 +27,10 @@ function checkIcon(url) {
     return url.includes('.svg');
 }
 
+function urlToPath(url)
+{
+    return url.replace(/\\/g, '/');
+}
 //#endregion
 
 //#region [List Tools]
@@ -43,5 +47,6 @@ module.exports = {
     fixUrl,
     getName,
     checkIcon,
-    urlToName
+    urlToName,
+    urlToPath
 }
