@@ -1,7 +1,9 @@
 //#region [Url Tools]
 function fixUrl(url) {
-    if (url.startsWith('http') || url.startsWith('https'))
+    url = url.trim();
+    if (url.match(`^(http|https)`))
         return url;
+    console.log(url, url.match(`^(http|https)`));
     return 'http://' + url;
 }
 

@@ -1,12 +1,12 @@
-const cheerio = window.require('cheerio');
-const axios = window.require('axios');
+const cheerio = require('cheerio');
+const axios = require('axios');
 const { fixUrl, getName, checkIcon, urlToName, urlToPath } = require('./tools.js');
 request = require('request');
 const { clipboard } = require('electron')
 const downloadsFolder = require('downloads-folder');
 
-const fs = window.require('fs');
-const pathModule = window.require('path');
+const fs = require('fs');
+const pathModule = require('path');
 
 const downloadPath = downloadsFolder();
 
