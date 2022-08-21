@@ -126,13 +126,13 @@ class Images {
         let id;
         for (let page in this.images) {
             id = 0;
-            html += `<div class="page">${page}<button onclick="deletePage('${page}')">Delete Page</button>`;
+            html += `<div class="page" onclick="setVisible(this);">${page}<button onclick="deletePage('${page}')">Delete Page</button><ul class="image-list">`;
             for (let image of this.images[page]) {
                 id++;
                 html += `<li class="container"><img src="${image}" class="image"><div class="middle"><button class="text" name="${image}" onclick="deleteImage(this.name)">Delete</button></div></li>`;
             }
+            html += `</ul></div>`;
         }
-        html += '</div>';
         return html;
     }
 }
@@ -141,6 +141,10 @@ let allSite = false;
 
 function AllSiteChanged() {
     allSite = !allSite;
+}
+
+function setVisible(element) {
+    element.classList.toggle('visible');
 }
 
 const images = new Images();
