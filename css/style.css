@@ -68,3 +68,19 @@ h1 {
     font-size: 16px;
     padding: 16px 32px;
 }
+
+.visible .image-list {
+    opacity: 1;
+    max-height: inherit;
+    border: white;
+    border-radius: 10px;
+}
+
+.image-list {
+    padding: 0px;
+    margin: 0px;
+    max-height: 0px;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 300ms ease; 
+}
