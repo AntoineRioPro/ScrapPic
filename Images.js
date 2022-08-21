@@ -42,6 +42,29 @@ function saveImages(page, images) {
 
 async function savePath(event) {
     urlObject = new URL(path);
+    console.log(urlObject.hostname);
+    if (allSite)
+    {
+        try {
+            const page = await axios.get(fixUrl(urlObject.hostname), function (req, res) {
+                res.header('Access-Control-Allow-Origin: *');
+                res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+            });
+            if (page.status !== 200)
+                return;
+            const $ = cheerio.load(page.data);
+            let links = $('a');
+            $(links).each(async function (i, link) {
+                let url = fixUrl($(link).attr('href'));
+                console.log(url);
+                if (!visited.includes(url))
+                    await images.scrape(url);
+            });
+        } catch (error) {
+            
+        }
+    }
+    
     await images.scrape(path);
     console.log(images.images);
     document.getElementById('scrap-images').innerHTML = images.inject();
@@ -95,6 +118,7 @@ class Images {
     }
 
     async scrape(url) {
+        visited.push(url);
         try {
             const page = await axios.get(url, function (req, res) {
                 res.header('Access-Control-Allow-Origin: *');
@@ -143,5 +167,6 @@ function AllSiteChanged() {
     allSite = !allSite;
 }
 
+var visited = [];
 const images = new Images();
 let path = "";
