@@ -19,6 +19,10 @@
         <input id="url" placeholder="Enter a URL" onchange="pathChange(this.value)">
         <button id="scrap-button" onclick="savePath()">Scrap</button>
         <button id="scrap-button" onclick="downloadImages()">Download</button>
+        <div>
+          <input type="checkbox" class="allSiteCheckbox" name="allSite" id="allSite" onchange="AllSiteChanged()">
+          <label for="allSite">Scrap all the pages of this website ?</label>
+        </div>
         <p id="scrap-images"></p>
     </div>
     <script src="./Images.js">

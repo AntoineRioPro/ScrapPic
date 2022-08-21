@@ -3,7 +3,6 @@ function fixUrl(url) {
     url = url.trim();
     if (url.match(`^(http|https)`))
         return url;
-    console.log(url, url.match(`^(http|https)`));
     return 'http://' + url;
 }
 

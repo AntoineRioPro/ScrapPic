@@ -10,6 +10,8 @@ const pathModule = require('path');
 
 const downloadPath = downloadsFolder();
 
+let urlObject;
+
 // function for test purposes
 function warn(msg = 'Warning!')
 {
@@ -39,6 +41,7 @@ function saveImages(page, images) {
 }
 
 async function savePath(event) {
+    urlObject = new URL(path);
     await images.scrape(path);
     console.log(images.images);
     document.getElementById('scrap-images').innerHTML = images.inject();
@@ -132,6 +135,12 @@ class Images {
         html += '</div>';
         return html;
     }
+}
+
+let allSite = false;
+
+function AllSiteChanged() {
+    allSite = !allSite;
 }
 
 const images = new Images();
